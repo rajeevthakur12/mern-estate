@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use('/api/user',userRouter);
 app.use('/api/auth',authRouter);
-app.use(cors());
+
 //middleware
 app.use((err,req,res,next)=>{
     const statusCode=err.statusCode || 500;
