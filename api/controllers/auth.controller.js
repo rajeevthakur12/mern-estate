@@ -2,10 +2,6 @@ import bcrypt from "bcrypt";
 import User from "../models/user.model.js";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
-import {
-  deleteUserFailure,
-  deleteUserStart,
-} from "../../client/src/redux/user/userSlice.js";
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 10);
