@@ -2,6 +2,10 @@ import bcrypt from "bcrypt";
 import User from "../models/user.model.js";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+import {
+  deleteUserFailure,
+  deleteUserStart,
+} from "../../client/src/redux/user/userSlice.js";
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 10);
@@ -62,6 +66,14 @@ export const google = async (req, res, next) => {
         .status(200)
         .json(rest);
     }
+  } catch (error) {
+    next(error);
+  }
+};
+export const signOut = async (req, res, next) => {
+  try {
+    res.clearCookie("access_token");
+    res.status(200).json("User has been logOut successfully!");
   } catch (error) {
     next(error);
   }
