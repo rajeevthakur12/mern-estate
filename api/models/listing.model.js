@@ -56,5 +56,5 @@ const listingSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-const Listing = new mongoose.model("Listing", listingSchema);
+const Listing = mongoose.model("Listing", listingSchema);
 export default Listing;
